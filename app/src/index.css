@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    --card: 220 6% 7%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 6% 7%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 108 100% 54%;
+    --primary-foreground: 0 0% 3%;
+    --secondary: 220 6% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 6% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 6% 15%;
+    --input: 220 6% 15%;
+    --ring: 108 100% 54%;
+    --radius: 0.25rem;
+    --sidebar-background: 220 6% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 108 100% 54%;
+    --sidebar-primary-foreground: 0 0% 3%;
+    --sidebar-accent: 220 6% 12%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 6% 15%;
+    --sidebar-ring: 108 100% 54%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  body {
+    @apply bg-void text-white font-body antialiased;
+    cursor: none;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+  ::selection {
+    background: rgba(57, 255, 20, 0.3);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .text-gradient-cyber {
+    background: linear-gradient(135deg, #39ff14 0%, #22cc0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .bg-glass {
+    background: rgba(15, 16, 18, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .border-cyber-glow {
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.1);
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom cursor styles */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(57, 255, 20, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+.cursor-ring.active {
+  width: 60px;
+  height: 60px;
+  border-color: #39ff14;
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+}
+
+/* Video overlay vignette */
+.video-vignette {
+  position: relative;
+}
+.video-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(7,7,7,0.8) 100%);
+  pointer-events: none;
+}
+
+/* Scanline effect for admin */
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.1) 2px,
+    rgba(0,0,0,0.1) 4px
+  );
+}
